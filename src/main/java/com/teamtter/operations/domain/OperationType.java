@@ -1,6 +1,6 @@
 package com.teamtter.operations.domain;
 
-public enum Operationtype {
+public enum OperationType {
 	MAINTENANCE, // ENTRETIEN
 	QUOTATION, // DEVIS
 	EXTRA, // supplement

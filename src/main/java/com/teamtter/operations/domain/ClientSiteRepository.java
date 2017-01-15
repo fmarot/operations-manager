@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface OperationRepository extends CrudRepository<Operation, Long> {
+public interface ClientSiteRepository extends CrudRepository<ClientSite, Long> {
 
-//	List<Operation> findByClientSite(ClientSite clientSite);
+	List<Operation> findByName(String name);
 }

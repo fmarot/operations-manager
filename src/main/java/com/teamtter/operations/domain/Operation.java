@@ -3,16 +3,21 @@ package com.teamtter.operations.domain;
 import java.time.Duration;
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 
-@Data
+@Entity
+@Table(name = "operation")
+@Getter
+@AllArgsConstructor
+@Slf4j
 public class Operation {
 
 	/** chantier */
@@ -20,16 +25,14 @@ public class Operation {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@ManyToOne
-	@Getter
-	@JoinColumn(name = "client_site_id")
-	ClientSite site;
+//	@ManyToOne
+//	ClientSite clientSite;
 
 	LocalDate date;
 
 	Duration duration;
 
-	Operationtype type;
+	OperationType type;
 
 	String freeText;
 
@@ -38,5 +41,19 @@ public class Operation {
 	protected Operation() {
 		// default constructor to make JPA happy
 	}
+
+	public Operation(LocalDate date,
+			Duration duration, OperationType type,
+			String freeText, boolean completed) {
+		super();
+//		this.clientSite = clientSite;
+		this.date = date;
+		this.duration = duration;
+		this.type = type;
+		this.freeText = freeText;
+		this.completed = completed;
+	}
+	
+	
 
 }
